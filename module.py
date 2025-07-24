@@ -38,7 +38,9 @@ class Module(module.ModuleModel):
         """ Init module """
         log.info("Initializing module")
         # Init
-        self.descriptor.init_all()
+        self.descriptor.init_all(
+            url_prefix=auth_core.get_relative_url_prefix(self.descriptor),
+        )
         # Register test info mapper
         auth_core.register_info_mapper(None, "auth_noop_info_mapper")
         # Register JSON mappers
